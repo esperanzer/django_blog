@@ -8,9 +8,8 @@ class Post(models.Model):
     text= models.TextField()
     content = models.TextField()
     published_date = models.DateTimeField(default=datetime.now, blank=True)
-    author = models.ForeignKey("User",on_delete=models.SET_NULL,null=True,related_name='articles')
-    # author = models.TextField()
-    user = models.ForeignKey(
-        get_user_model(),
-        null=True, 
-    )
+    author = models.ForeignKey("Author",on_delete=models.CASCADE)
+    class Meta:
+        abstract = True
+    def get_user_model():
+        return get_user_model().objects.get_or_create(username='deleted')[0]
