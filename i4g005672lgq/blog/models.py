@@ -8,9 +8,9 @@ class Post(models.Model):
     text= models.TextField()
     content = models.TextField()
     published_date = models.DateTimeField(default=datetime.now, blank=True)
-    author = models.TextField()
-    # author = models.ForeignKey("User",on_delete=models.SET_NULL,null=True,related_name='posts')
-    # user = models.ForeignKey(
-    #     get_user_model(),
-    #     null=True, 
-    # )
+    author = models.ForeignKey("User",on_delete=models.SET_NULL,null=True,related_name='articles')
+    # author = models.TextField()
+    user = models.ForeignKey(
+        get_user_model(),
+        null=True, 
+    )
